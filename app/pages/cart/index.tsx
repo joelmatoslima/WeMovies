@@ -3,14 +3,21 @@ import EmptyScreen from "~/components/empty-screen/empty-screen";
 import Card from "~/components/ui/card";
 import * as C from "./styles";
 import type { Route } from "./+types";
-import Button from "~/components/ui/button";
 import TrashIcon from "@/assets/svg/trash-con.svg";
+import { useCartContext } from "~/context/CartContext";
+import Button from "~/components/ui/button";
+import CartCounter from "~/components/cart-counter/cart-counter";
 
 export default function CartPage() {
+  const {
+    cartItems,
+    amount,
+    incrementMovieQuantity,
+    decrementMovieQuantity,
+    removeMovie,
+  } = useCartContext();
   const navigate = useNavigate();
-  const items = [1, 2];
-
-  if (items.length === 0)
+  if (cartItems.length === 0)
     return (
       <EmptyScreen
         buttonText="Voltar para a loja"
@@ -30,20 +37,53 @@ export default function CartPage() {
           </tr>
         </C.TableHeader>
         <C.TableBody>
-          {items.map((item) => (
-            <tr key={item}>
-              <td>Produto 1</td>
-              <td>1</td>
-              <td>R$ 10,00</td>
+          {cartItems.map((item) => (
+            <C.TableRow key={item.movie.id + item.quantity}>
+              {/* same size row */}
+              <C.TableProductCell>
+                <img
+                  src={item.movie.image}
+                  alt={item.movie.title}
+                  width={91}
+                  height={114}
+                />
+                <div className="product-cell">
+                  <span className="product_title">{item.movie.title}</span>
+                  <span className="product_price">
+                    {item.movie.price.toCurrency()}
+                  </span>
+                </div>
+              </C.TableProductCell>
               <td>
-                <button>
+                <CartCounter
+                  quantity={item.quantity}
+                  onIncrement={() => incrementMovieQuantity(item.movie)}
+                  onDecrement={() => decrementMovieQuantity(item.movie)}
+                />
+              </td>
+              <C.TablePriceCell>
+                <span>{item.movie.price.toCurrency()}</span>
+              </C.TablePriceCell>
+              <C.TableRemoveCell>
+                <button onClick={() => removeMovie(item.movie)}>
                   <img src={TrashIcon} alt="trash" width={24} height={24} />
                 </button>
-              </td>
-            </tr>
+              </C.TableRemoveCell>
+            </C.TableRow>
           ))}
         </C.TableBody>
       </C.Table>
+      <C.Hr />
+      <C.Footer>
+        <Button maxWidth={157} onClick={() => navigate("/success")}>
+          FINALIZAR PEDIDO
+        </Button>
+
+        <div className="total-area">
+          <span>TOTAL</span>
+          <strong>{amount.toCurrency()}</strong>
+        </div>
+      </C.Footer>
     </Card>
   );
 }

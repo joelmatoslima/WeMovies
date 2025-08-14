@@ -10,10 +10,12 @@ export const Header = styled.header`
   max-height: 88px;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled(Link)`
   font-family: Open Sans;
   font-weight: 700;
   font-size: 20px;
+  text-decoration: none;
+  color: inherit;
 `;
 
 export const CartLink = styled(Link)`

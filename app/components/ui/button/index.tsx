@@ -4,11 +4,17 @@ type Props = {
   children: React.ReactNode;
   maxWidth?: number;
   onClick?: VoidFunction;
+  isSelected?: boolean;
 };
 
-export default function Button({ children, maxWidth, onClick }: Props) {
+export default function Button({
+  children,
+  maxWidth,
+  onClick,
+  isSelected,
+}: Props) {
   return (
-    <C.Button $maxWidth={maxWidth} onClick={onClick}>
+    <C.Button $maxWidth={maxWidth} onClick={onClick} $isSelected={isSelected}>
       {children}
     </C.Button>
   );
