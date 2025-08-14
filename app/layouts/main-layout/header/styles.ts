@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styled from "styled-components";
 
 export const Header = styled.header`
@@ -15,10 +16,11 @@ export const Logo = styled.div`
   font-size: 20px;
 `;
 
-
-export const Cart = styled.div`
+export const CartLink = styled(Link)`
   display: flex;
   gap: 16px;
+  text-decoration: none;
+  color: inherit;
 `;
 
 export const CartInfo = styled.div`

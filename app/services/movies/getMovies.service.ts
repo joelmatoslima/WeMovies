@@ -1,9 +1,14 @@
 import { isAxiosError } from "axios";
 import api from "../api";
-import type MovieModel from "~/model/Movie.model";
+import type MovieModel from "~/domain/model/Movie.model";
 import type { Result } from "~/interfaces/Result.interface";
+interface MovieModelResponse {
+  products: Array<MovieModel>;
+}
 
-export default async function getMoviesService(): Promise<Result<MovieModel>> {
+export default async function getMoviesService(): Promise<
+  Result<MovieModelResponse>
+> {
   try {
     const response = await api.get("/movies");
     return { success: true, data: response.data };

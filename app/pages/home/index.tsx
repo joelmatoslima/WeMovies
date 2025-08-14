@@ -8,15 +8,12 @@ import type { Route } from "./+types";
 import CartIcon from "@/assets/svg/cart-icon.svg";
 import Loading from "~/components/loading";
 import EmptyScreen from "~/components/empty-screen/empty-screen";
+import type MovieModel from "~/domain/model/Movie.model";
+import CartEntity from "~/domain/entity/CartEntity";
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Teste Front React WeMovies" },
-    { name: "description", content: "Teste Front React WeMovies" },
-  ];
-}
+const cartEntity = new CartEntity();
 
-export default function Home() {
+export default function HomePage() {
   const {
     data: movies = [],
     isLoading,
@@ -26,6 +23,10 @@ export default function Home() {
     queryFn: getMoviesService,
     select: (data) => (data.success ? data.data?.products : []),
   });
+
+  function addToCart(movie: MovieModel) {
+    cartEntity.addOrRemoveMovie(movie);
+  }
 
   if (isLoading)
     return (
@@ -48,7 +49,7 @@ export default function Home() {
             <C.MovieTitle>{movie.title}</C.MovieTitle>
             <C.MoviePrice>{movie.price.toCurrency()}</C.MoviePrice>
 
-            <Button>
+            <Button onClick={() => addToCart(movie)}>
               <C.MovieButtonArea>
                 <div className="icon-area">
                   <img src={CartIcon} alt="cart" width={13.6} height={13.6} />
@@ -62,4 +63,11 @@ export default function Home() {
       ))}
     </C.Content>
   );
+}
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Teste Front React WeMovies" },
+    { name: "description", content: "Teste Front React WeMovies" },
+  ];
 }
