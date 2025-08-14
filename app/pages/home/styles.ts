@@ -40,3 +40,12 @@ export const MovieButtonArea = styled.div`
     font-weight: 400;
   }
 `;
+
+export const LoadingArea = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+`;

@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+type Props = {
+  $maxWidth?: number;
+};
+
+export const Button = styled.button<Props>`
   width: 100%;
+  max-width: ${({ $maxWidth: $maxwidth }) => $maxwidth && `${$maxwidth}px`};
   min-height: 40px;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.textLight};
+  font-size: 12px;
   border-radius: 4px;
-  width: 100%;
   gap: 12px;
   padding: 8px;
   text-transform: uppercase;

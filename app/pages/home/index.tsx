@@ -1,11 +1,13 @@
 import getMoviesService from "~/services/movies/getMovies.service";
-import Card from "~/components/card";
+import Card from "~/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "~/constants/queryKey";
 import * as C from "./styles";
-import Button from "~/components/button";
+import Button from "~/components/ui/button";
 import type { Route } from "./+types";
 import CartIcon from "@/assets/svg/cart-icon.svg";
+import Loading from "~/components/loading";
+import EmptyScreen from "~/components/empty-screen/empty-screen";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -15,11 +17,27 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const { data: movies = [] } = useQuery({
+  const {
+    data: movies = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: [QUERY_KEY.MOVIES],
     queryFn: getMoviesService,
     select: (data) => (data.success ? data.data?.products : []),
   });
+
+  if (isLoading)
+    return (
+      <C.LoadingArea>
+        <Loading />
+      </C.LoadingArea>
+    );
+
+  if (movies.length === 0)
+    return (
+      <EmptyScreen buttonText="Recarregar página" onButtonClick={refetch} />
+    );
 
   return (
     <C.Content>

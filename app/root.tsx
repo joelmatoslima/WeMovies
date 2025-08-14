@@ -15,6 +15,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { StyleSheetManager } from "styled-components";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
