@@ -1,17 +1,17 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-    body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    background-color: red;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
+    body {    
+        background-color: #2F2E41;
+        font-family: 'Open Sans', sans-serif;     
+    }
+  
 
-    h1, h2, h3 {
-    color: #333;
     
-    }
 `;
 export default GlobalStyle;
