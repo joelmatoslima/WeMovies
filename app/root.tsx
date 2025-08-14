@@ -1,4 +1,6 @@
 import "./styles/css/root.css";
+import "./utils/numberExtensions";
+
 import {
   isRouteErrorResponse,
   Links,

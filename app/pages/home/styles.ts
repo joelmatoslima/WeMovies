@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const MovieCard = styled.div`
   width: 100%;
+  height: 100%;
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,4 +26,17 @@ export const MoviePrice = styled.p`
   font-size: 16px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.textPrimaryDark};
+`;
+
+export const MovieButtonArea = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  .icon-area {
+    display: flex;
+    gap: 3.4px;
+
+    font-weight: 400;
+  }
 `;

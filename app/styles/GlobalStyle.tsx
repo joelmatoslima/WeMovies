@@ -10,6 +10,11 @@ const GlobalStyle = createGlobalStyle`
         background-color: #2F2E41;
         font-family: 'Open Sans', sans-serif;     
     }
+
+    button {
+        border: none;
+        cursor: pointer;
+    }
   
 
     
