@@ -13,7 +13,11 @@ export default function Header() {
       <C.CartLink to="/cart">
         <C.CartInfo>
           <C.CartInfoTitle>Meu Carrinho</C.CartInfoTitle>
-          <C.CartInfoCount>{cartItems.length} itens</C.CartInfoCount>
+          <C.CartInfoCount>
+            {cartItems.length > 1
+              ? `${cartItems.length} itens`
+              : `${cartItems.length} item`}
+          </C.CartInfoCount>
         </C.CartInfo>
 
         <img src={BagIcon} alt="Bag" width={24} height={24} />
