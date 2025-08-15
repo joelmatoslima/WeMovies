@@ -45,6 +45,7 @@ export const MovieButtonArea = styled.div`
 
   .icon-area {
     display: flex;
+    align-items: center;
     gap: 3.4px;
 
     font-weight: 400;
