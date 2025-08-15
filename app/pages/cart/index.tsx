@@ -110,7 +110,9 @@ export default function CartPage() {
                     />
                   </td>
                   <C.TablePriceCell>
-                    <span>{item.movie.price.toCurrency()}</span>
+                    <span>
+                      {(item.movie.price * item.quantity).toCurrency()}
+                    </span>
                   </C.TablePriceCell>
                   <C.TableRemoveCell>
                     <button onClick={() => removeMovie(item.movie)}>
