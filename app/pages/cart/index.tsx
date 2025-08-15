@@ -37,8 +37,8 @@ export default function CartPage() {
           </tr>
         </C.TableHeader>
         <C.TableBody>
-          {cartItems.map((item) => (
-            <C.TableRow key={item.movie.id + item.quantity}>
+          {cartItems.map((item, index) => (
+            <C.TableRow key={index}>
               {/* same size row */}
               <C.TableProductCell>
                 <img

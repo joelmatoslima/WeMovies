@@ -12,5 +12,6 @@ export const Content = styled.div`
     font-weight: 700;
     font-size: 20px;
     color: ${({ theme }) => theme.colors.textDark};
+    text-align: center;
   }
 `;

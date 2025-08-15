@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { sizesMediaQueries } from "~/constants/sizesMediaQueries";
 
 export const MovieCard = styled.div`
   width: 100%;
@@ -14,6 +15,15 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px 16px;
+  margin: auto;
+  padding-bottom: 16px;
+  @media ${sizesMediaQueries.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media ${sizesMediaQueries.mobileL} {
+    grid-template-columns: repeat(1, 1fr);
+    width: 328px;
+  }
 `;
 
 export const MovieTitle = styled.h2`

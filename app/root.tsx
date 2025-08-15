@@ -38,6 +38,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="icon"
+          href="https://wefit.com.br/favicon-32x32.png?v=70657771bed57ef4b6776dc90ef45ebf"
+        ></link>
         <Meta />
         <Links />
       </head>

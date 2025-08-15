@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import styled from "styled-components";
+import { sizesMediaQueries } from "~/constants/sizesMediaQueries";
 
 export const Header = styled.header`
   display: flex;
@@ -7,7 +8,7 @@ export const Header = styled.header`
   align-items: center;
   color: ${({ theme }) => theme.colors.textLight};
   padding: 31.5px 0px;
-  max-height: 88px;
+  height: 88px;
 `;
 
 export const Logo = styled(Link)`
@@ -20,6 +21,7 @@ export const Logo = styled(Link)`
 
 export const CartLink = styled(Link)`
   display: flex;
+  align-items: center;
   gap: 16px;
   text-decoration: none;
   color: inherit;
@@ -34,6 +36,10 @@ export const CartInfo = styled.div`
 export const CartInfoTitle = styled.span`
   font-size: 14px;
   font-weight: 600;
+
+  @media ${sizesMediaQueries.tablet} {
+    display: none;
+  }
 `;
 
 export const CartInfoCount = styled.small`
