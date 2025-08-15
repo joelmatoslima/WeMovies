@@ -78,7 +78,9 @@ export default function CartPage() {
                       </div>
                       <div className="price-cell__bottom">
                         <span>Subtotal</span>
-                        <strong>{item.movie.price * item.quantity}</strong>
+                        <strong>
+                          {(item.movie.price * item.quantity).toCurrency()}
+                        </strong>
                       </div>
                     </div>
                   </C.TablePriceCellMobile>

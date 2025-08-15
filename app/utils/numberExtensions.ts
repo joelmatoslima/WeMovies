@@ -6,10 +6,11 @@ if (!Number.prototype.toCurrency) {
     if (typeof this.valueOf() !== "number") {
       return this.valueOf().toString();
     }
-    const formatted = this.valueOf().toLocaleString("pt-BR", {
+    const formatted = this.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
       minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     });
 
     return formatted;

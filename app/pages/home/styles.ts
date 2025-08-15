@@ -20,9 +20,9 @@ export const Content = styled.div`
   @media ${sizesMediaQueries.tablet} {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media ${sizesMediaQueries.mobileL} {
+  @media (max-width: 550px) {
     grid-template-columns: repeat(1, 1fr);
-    width: 328px;
+    width: 100%;
   }
 `;
 
