@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { sizesMediaQueries } from "~/constants/sizesMediaQueries";
+
+export const Container = styled.div``;
 
 export const Table = styled.table`
   width: 100%;
@@ -9,6 +12,12 @@ export const Table = styled.table`
     vertical-align: middle;
     width: 280px;
   }
+
+  @media ${sizesMediaQueries.tablet} {
+    td {
+      width: auto;
+    }
+  }
 `;
 
 export const TableHeader = styled.thead`
@@ -16,6 +25,10 @@ export const TableHeader = styled.thead`
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
+
+  @media ${sizesMediaQueries.tablet} {
+    display: none;
+  }
 
   th {
     padding: 24px 0;
@@ -50,6 +63,21 @@ export const TableProductCell = styled.td`
     font-weight: 700;
     font-size: 16px;
   }
+
+  .mobile-product-cell {
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  @media ${sizesMediaQueries.tablet} {
+    align-items: flex-start;
+
+    .product-image {
+      width: 64px;
+      height: 82px;
+    }
+  }
 `;
 
 export const Hr = styled.hr`
@@ -62,6 +90,43 @@ export const TablePriceCell = styled.td`
     font-weight: 700;
     font-size: 16px;
     color: ${({ theme }) => theme.colors.textPrimaryDark};
+  }
+`;
+
+export const TablePriceCellMobile = styled(TablePriceCell)`
+  text-align: right;
+  padding-bottom: 24px;
+
+  .price-cell__top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  .price-cell__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    span {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 14px;
+      color: ${({ theme }) => theme.colors.textMuted};
+    }
+
+    strong {
+      font-weight: 700;
+      font-size: 16px;
+      color: ${({ theme }) => theme.colors.textPrimaryDark};
+    }
+  }
+
+  .price-cell__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 `;
 
@@ -90,5 +155,20 @@ export const Footer = styled.div`
     font-weight: 700;
     font-size: 24px;
     color: ${({ theme }) => theme.colors.textPrimaryDark};
+  }
+
+  @media ${sizesMediaQueries.tablet} {
+    flex-direction: column-reverse;
+    gap: 16px;
+
+    .total-area {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    button {
+      width: 100%;
+      max-width: 100%;
+    }
   }
 `;
